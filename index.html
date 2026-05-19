@@ -1,85 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Pingo </title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header id="top">
-<span class="logo">Pingo </span>
-<div class="bd"><i class="fas fa-coins" style="color:var(--y)"></i><span id="sC">120</span></div>
-<div class="bd"><i class="fas fa-gem" style="color:#CE93D8"></i><span id="sG">5</span></div>
-<div class="lw"><span style="color:var(--mt)">Nv.<b id="sL" style="color:var(--t)">1</b></span><div id="xpb"><div id="xpf" style="width:0%"></div></div></div>
-</header>
-<div id="nds">
-<div class="ni"><i class="fas fa-drumstick-bite" style="color:#FF6B35"></i><div class="nb"><div class="nf fh" id="bH" style="width:80%"></div></div></div>
-<div class="ni"><i class="fas fa-bolt" style="color:#4ECDC4"></i><div class="nb"><div class="nf fe" id="bE" style="width:90%"></div></div></div>
-<div class="ni"><i class="fas fa-face-smile" style="color:#FF6B9D"></i><div class="nb"><div class="nf ff" id="bF" style="width:70%"></div></div></div>
-<div class="ni"><i class="fas fa-droplet" style="color:#42A5F5"></i><div class="nb"><div class="nf fc2" id="bC" style="width:85%"></div></div></div>
-<div class="ni"><i class="fas fa-heart" style="color:#EF5350"></i><div class="nb"><div class="nf fhp" id="bHp" style="width:90%"></div></div></div>
-</div>
-<div id="rw">
-<div class="rm on" id="r-hall">
-<img src="imagem/sala.jpg" class="room-bg-img" alt="">
-<div class="room-overlay"></div>
-</div>
-<div class="rm" id="r-food">
-<img src="imagem/cozinha.jpg" class="room-bg-img" alt="">
-<div class="room-overlay food-ov"></div>
-</div>
-<div class="rm" id="r-bath">
-<img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=60" class="room-bg-img" alt="">
-<div class="room-overlay bath-ov"></div>
-</div>
-<div class="rm" id="r-games">
-<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&q=60" class="room-bg-img" alt="">
-<div class="room-overlay game-ov"></div>
-</div>
-<div class="rm" id="r-lab">
-<img src="imagem/lab.jpg" class="room-bg-img" alt="">
-<div class="room-overlay lab-ov"></div>
-</div>
-<div class="rm" id="r-closet">
-<img src="imagem/closet.jpg" class="room-bg-img" alt="">
-<div class="room-overlay closet-ov"></div>
-</div>
-<canvas id="pc"></canvas>
-<div id="sp"></div>
-<div id="mf">😊</div>
-<div class="hw" id="ui-hall">
-<button class="hb" onclick="petPou()" style="color:var(--p)"><i class="fas fa-hand-sparkles"></i></button>
-<button class="hb" onclick="pouSleep()" style="color:#B39DDB"><i class="fas fa-moon"></i></button>
-<button class="hb" onclick="pouDance()" style="color:var(--o)"><i class="fas fa-music"></i></button>
-</div>
-<div id="fg"></div>
-<div id="bath-items"></div>
-<div id="cbw"><div id="cbf" style="width:0%"></div></div>
-<div class="gp" id="ui-games" style="display:none"></div>
-<div class="pl" id="ui-lab" style="display:none"></div>
-<div class="cp" id="ui-closet" style="display:none"></div>
-<div id="consume-fx" style="display:none;position:absolute;z-index:25;pointer-events:none;font-size:2rem;transition:all .3s"></div>
-</div>
-<nav id="tb">
-<button class="tab on" data-r="hall"><i class="fas fa-home"></i><span>Sala</span></button>
-<button class="tab" data-r="food"><i class="fas fa-utensils"></i><span>Comer</span></button>
-<button class="tab" data-r="bath"><i class="fas fa-bath"></i><span>Banho</span></button>
-<button class="tab" data-r="games"><i class="fas fa-gamepad"></i><span>Jogos</span></button>
-<button class="tab" data-r="lab"><i class="fas fa-flask"></i><span>Lab</span></button>
-<button class="tab" data-r="closet"><i class="fas fa-shirt"></i><span>Visual</span></button>
-</nav>
-<div id="gov">
-<div id="ghud">Pontos: <span id="gsc">0</span></div>
-<canvas id="gc" width="320" height="440"></canvas>
-<div class="gob">
-<button class="gbtn gex" onclick="endGame()"><i class="fas fa-times"></i> Sair</button>
-<button class="gbtn gre" onclick="restartGame()"><i class="fas fa-redo"></i> Jogar</button>
-</div>
-</div>
-<div id="dc"></div>
-<div id="toast"></div>
-<script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>Pingo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header id="top">
+      <div class="top-inner">
+        <span class="logo">Pingo</span>
+        <div class="stats">
+          <div class="st">
+            <i class="fas fa-coins" style="color: #ffd54f"></i
+            ><b id="sC">120</b>
+          </div>
+          <div class="st">
+            <i class="fas fa-gem" style="color: #ce93d8"></i><b id="sG">5</b>
+          </div>
+          <div class="lvl-wrap">
+            <span class="lvl-txt">Nv.<b id="sL">1</b></span>
+            <div class="xp-track"><div class="xp-fill" id="xpf"></div></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div id="nds">
+      <div class="ni">
+        <div class="ni-icon" style="color: #ff6b35">
+          <i class="fas fa-drumstick-bite"></i>
+        </div>
+        <div class="ni-bar">
+          <div class="ni-fill fh" id="bH" style="width: 80%"></div>
+        </div>
+        <span class="ni-val" id="lH">80</span>
+      </div>
+      <div class="ni">
+        <div class="ni-icon" style="color: #4ecdc4">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <div class="ni-bar">
+          <div class="ni-fill fe" id="bE" style="width: 90%"></div>
+        </div>
+        <span class="ni-val" id="lE">90</span>
+      </div>
+      <div class="ni">
+        <div class="ni-icon" style="color: #ff6b9d">
+          <i class="fas fa-face-smile"></i>
+        </div>
+        <div class="ni-bar">
+          <div class="ni-fill ff" id="bF" style="width: 70%"></div>
+        </div>
+        <span class="ni-val" id="lF">70</span>
+      </div>
+      <div class="ni">
+        <div class="ni-icon" style="color: #42a5f5">
+          <i class="fas fa-droplet"></i>
+        </div>
+        <div class="ni-bar">
+          <div class="ni-fill fc2" id="bC" style="width: 85%"></div>
+        </div>
+        <span class="ni-val" id="lC">85</span>
+      </div>
+      <div class="ni">
+        <div class="ni-icon" style="color: #ef5350">
+          <i class="fas fa-heart"></i>
+        </div>
+        <div class="ni-bar">
+          <div class="ni-fill fhp" id="bHp" style="width: 90%"></div>
+        </div>
+        <span class="ni-val" id="lHp">90</span>
+      </div>
+    </div>
+    <div id="rw">
+      <div class="rm on" id="r-hall">
+        <img
+          src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=60"
+          class="room-bg-img"
+          alt=""
+        />
+        <div class="room-overlay"></div>
+      </div>
+      <div class="rm" id="r-food">
+        <img
+          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=60"
+          class="room-bg-img"
+          alt=""
+        />
+        <div class="room-overlay food-ov"></div>
+      </div>
+      <div class="rm" id="r-bath">
+        <img
+          src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=60"
+          class="room-bg-img"
+          alt=""
+        />
+        <div class="room-overlay bath-ov"></div>
+      </div>
+      <div class="rm" id="r-games">
+        <img
+          src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&q=60"
+          class="room-bg-img"
+          alt=""
+        />
+        <div class="room-overlay game-ov"></div>
+      </div>
+      <div class="rm" id="r-lab">
+        <img
+          src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&q=60"
+          class="room-bg-img"
+          alt=""
+        />
+        <div class="room-overlay lab-ov"></div>
+      </div>
+      <div class="rm" id="r-closet">
+        <img
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=60"
+          class="room-bg-img"
+          alt=""
+        />
+        <div class="room-overlay closet-ov"></div>
+      </div>
+      <canvas id="pc"></canvas>
+      <div id="drag-target"></div>
+      <div id="sp"></div>
+      <div id="mf">😊</div>
+      <div class="hw" id="ui-hall">
+        <button class="hb" onclick="petPou()">
+          <i class="fas fa-hand-sparkles"></i>
+        </button>
+        <button class="hb" onclick="pouSleep()">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="hb" onclick="pouDance()">
+          <i class="fas fa-music"></i>
+        </button>
+      </div>
+      <div id="fg" class="item-grid"></div>
+      <div id="bath-items" class="item-grid"></div>
+      <div class="gp" id="ui-games" style="display: none"></div>
+      <div class="pl" id="ui-lab" style="display: none"></div>
+      <div class="cp" id="ui-closet" style="display: none"></div>
+    </div>
+    <nav id="tb">
+      <button class="tab on" data-r="hall">
+        <i class="fas fa-home"></i><span>Sala</span>
+      </button>
+      <button class="tab" data-r="food">
+        <i class="fas fa-utensils"></i><span>Comer</span>
+      </button>
+      <button class="tab" data-r="bath">
+        <i class="fas fa-bath"></i><span>Banho</span>
+      </button>
+      <button class="tab" data-r="games">
+        <i class="fas fa-gamepad"></i><span>Jogos</span>
+      </button>
+      <button class="tab" data-r="lab">
+        <i class="fas fa-flask"></i><span>Lab</span>
+      </button>
+      <button class="tab" data-r="closet">
+        <i class="fas fa-shirt"></i><span>Visual</span>
+      </button>
+    </nav>
+    <div id="gov">
+      <div id="ghud">Pontos: <span id="gsc">0</span></div>
+      <canvas id="gc" width="320" height="440"></canvas>
+      <div class="gob">
+        <button class="gbtn gex" onclick="endGame()">
+          <i class="fas fa-times"></i> Sair
+        </button>
+        <button class="gbtn gre" onclick="restartGame()">
+          <i class="fas fa-redo"></i> Jogar
+        </button>
+      </div>
+    </div>
+    <div id="dc"></div>
+    <div id="toast"></div>
+    <script src="script.js"></script>
+  </body>
 </html>
