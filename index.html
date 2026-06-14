@@ -1,192 +1,188 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
-    />
-    <title>Pingo</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header id="top">
-      <div class="top-inner">
-        <span class="logo">Pingo</span>
-        <div class="stats">
-          <div class="st">
-            <i class="fas fa-coins" style="color: #ffd54f"></i
-            ><b id="sC">120</b>
-          </div>
-          <div class="st">
-            <i class="fas fa-gem" style="color: #ce93d8"></i><b id="sG">5</b>
-          </div>
-          <div class="lvl-wrap">
-            <span class="lvl-txt">Nv.<b id="sL">1</b></span>
-            <div class="xp-track"><div class="xp-fill" id="xpf"></div></div>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Pingo</title>
+
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#0a0e17" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Pingo" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="application-name" content="Pingo" />
+  <meta name="description" content="Seu pet virtual favorito - cuide, alimente e brinque!" />
+
+  <!-- Manifest dinâmico via JS (logo abaixo) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0e17'/%3E%3Ccircle cx='50' cy='50' r='30' fill='%231a3a6a'/%3E%3Cellipse cx='50' cy='56' rx='18' ry='26' fill='%23e8edf2'/%3E%3Ccircle cx='42' cy='44' r='4' fill='%23fff'/%3E%3Ccircle cx='58' cy='44' r='4' fill='%23fff'/%3E%3Ccircle cx='42' cy='44' r='2' fill='%230a0a1e'/%3E%3Ccircle cx='58' cy='44' r='2' fill='%230a0a1e'/%3E%3C/svg%3E" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Manifest PWA gerado dinamicamente -->
+  <script>
+  (function(){
+    var svgIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">'
+      + '<rect width="512" height="512" rx="96" fill="#0a0e17"/>'
+      + '<circle cx="256" cy="250" r="145" fill="#1a3a6a"/>'
+      + '<ellipse cx="256" cy="285" rx="88" ry="125" fill="#e8edf2"/>'
+      + '<circle cx="215" cy="228" r="22" fill="#fff"/>'
+      + '<circle cx="297" cy="228" r="22" fill="#fff"/>'
+      + '<circle cx="215" cy="228" r="11" fill="#0a0a1e"/>'
+      + '<circle cx="297" cy="228" r="11" fill="#0a0a1e"/>'
+      + '<circle cx="211" cy="223" r="4" fill="#fff"/>'
+      + '<circle cx="293" cy="223" r="4" fill="#fff"/>'
+      + '<path d="M232 290Q256 312 280 290" stroke="#2a1a0a" stroke-width="5" fill="none" stroke-linecap="round"/>'
+      + '<text x="256" y="470" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="72" fill="#4ECDC4">Pingo</text>'
+      + '</svg>';
+    var manifest = {
+      name: "Pingo - Pet Virtual",
+      short_name: "Pingo",
+      description: "Seu pet virtual favorito",
+      start_url: "./",
+      scope: "./",
+      display: "standalone",
+      background_color: "#0a0e17",
+      theme_color: "#0a0e17",
+      orientation: "portrait",
+      icons: [{
+        src: "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgIcon),
+        sizes: "any",
+        type: "image/svg+xml",
+        purpose: "any maskable"
+      }]
+    };
+    var blob = new Blob([JSON.stringify(manifest)], {type: 'application/json'});
+    var link = document.createElement('link');
+    link.rel = 'manifest';
+    link.href = URL.createObjectURL(blob);
+    document.head.appendChild(link);
+  })();
+  </script>
+</head>
+<body>
+  <header id="top">
+    <div class="top-inner">
+      <span class="logo">Pingo</span>
+      <div class="stats">
+        <div class="st">
+          <i class="fas fa-coins" style="color: #ffd54f"></i><b id="sC">120</b>
         </div>
-      </div>
-    </header>
-    <div id="nds">
-      <div class="ni">
-        <div class="ni-icon" style="color: #ff6b35">
-          <i class="fas fa-drumstick-bite"></i>
+        <div class="st">
+          <i class="fas fa-gem" style="color: #ce93d8"></i><b id="sG">5</b>
         </div>
-        <div class="ni-bar">
-          <div class="ni-fill fh" id="bH" style="width: 80%"></div>
+        <div class="lvl-wrap">
+          <span class="lvl-txt">Nv.<b id="sL">1</b></span>
+          <div class="xp-track"><div class="xp-fill" id="xpf"></div></div>
         </div>
-        <span class="ni-val" id="lH">80</span>
-      </div>
-      <div class="ni">
-        <div class="ni-icon" style="color: #4ecdc4">
-          <i class="fas fa-bolt"></i>
-        </div>
-        <div class="ni-bar">
-          <div class="ni-fill fe" id="bE" style="width: 90%"></div>
-        </div>
-        <span class="ni-val" id="lE">90</span>
-      </div>
-      <div class="ni">
-        <div class="ni-icon" style="color: #ff6b9d">
-          <i class="fas fa-face-smile"></i>
-        </div>
-        <div class="ni-bar">
-          <div class="ni-fill ff" id="bF" style="width: 70%"></div>
-        </div>
-        <span class="ni-val" id="lF">70</span>
-      </div>
-      <div class="ni">
-        <div class="ni-icon" style="color: #42a5f5">
-          <i class="fas fa-droplet"></i>
-        </div>
-        <div class="ni-bar">
-          <div class="ni-fill fc2" id="bC" style="width: 85%"></div>
-        </div>
-        <span class="ni-val" id="lC">85</span>
-      </div>
-      <div class="ni">
-        <div class="ni-icon" style="color: #ef5350">
-          <i class="fas fa-heart"></i>
-        </div>
-        <div class="ni-bar">
-          <div class="ni-fill fhp" id="bHp" style="width: 90%"></div>
-        </div>
-        <span class="ni-val" id="lHp">90</span>
       </div>
     </div>
-    <div id="rw">
-      <div class="rm on" id="r-hall">
-        <img
-          src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=60"
-          class="room-bg-img"
-          alt=""
-        />
-        <div class="room-overlay"></div>
-      </div>
-      <div class="rm" id="r-food">
-        <img
-          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=60"
-          class="room-bg-img"
-          alt=""
-        />
-        <div class="room-overlay food-ov"></div>
-      </div>
-      <div class="rm" id="r-bath">
-        <img
-          src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=60"
-          class="room-bg-img"
-          alt=""
-        />
-        <div class="room-overlay bath-ov"></div>
-      </div>
-      <div class="rm" id="r-games">
-        <img
-          src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&q=60"
-          class="room-bg-img"
-          alt=""
-        />
-        <div class="room-overlay game-ov"></div>
-      </div>
-      <div class="rm" id="r-lab">
-        <img
-          src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&q=60"
-          class="room-bg-img"
-          alt=""
-        />
-        <div class="room-overlay lab-ov"></div>
-      </div>
-      <div class="rm" id="r-closet">
-        <img
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=60"
-          class="room-bg-img"
-          alt=""
-        />
-        <div class="room-overlay closet-ov"></div>
-      </div>
-      <canvas id="pc"></canvas>
-      <div id="drag-target"></div>
-      <div id="sp"></div>
-      <div id="mf">😊</div>
-      <div class="hw" id="ui-hall">
-        <button class="hb" onclick="petPou()">
-          <i class="fas fa-hand-sparkles"></i>
-        </button>
-        <button class="hb" onclick="pouSleep()">
-          <i class="fas fa-moon"></i>
-        </button>
-        <button class="hb" onclick="pouDance()">
-          <i class="fas fa-music"></i>
-        </button>
-      </div>
-      <div id="fg" class="item-grid"></div>
-      <div id="bath-items" class="item-grid"></div>
-      <div class="gp" id="ui-games" style="display: none"></div>
-      <div class="pl" id="ui-lab" style="display: none"></div>
-      <div class="cp" id="ui-closet" style="display: none"></div>
+  </header>
+  <div id="nds">
+    <div class="ni">
+      <div class="ni-icon" style="color: #ff6b35"><i class="fas fa-drumstick-bite"></i></div>
+      <div class="ni-bar"><div class="ni-fill fh" id="bH" style="width: 80%"></div></div>
+      <span class="ni-val" id="lH">80</span>
     </div>
-    <nav id="tb">
-      <button class="tab on" data-r="hall">
-        <i class="fas fa-home"></i><span>Sala</span>
-      </button>
-      <button class="tab" data-r="food">
-        <i class="fas fa-utensils"></i><span>Comer</span>
-      </button>
-      <button class="tab" data-r="bath">
-        <i class="fas fa-bath"></i><span>Banho</span>
-      </button>
-      <button class="tab" data-r="games">
-        <i class="fas fa-gamepad"></i><span>Jogos</span>
-      </button>
-      <button class="tab" data-r="lab">
-        <i class="fas fa-flask"></i><span>Lab</span>
-      </button>
-      <button class="tab" data-r="closet">
-        <i class="fas fa-shirt"></i><span>Visual</span>
-      </button>
-    </nav>
-    <div id="gov">
-      <div id="ghud">Pontos: <span id="gsc">0</span></div>
-      <canvas id="gc" width="320" height="440"></canvas>
-      <div class="gob">
-        <button class="gbtn gex" onclick="endGame()">
-          <i class="fas fa-times"></i> Sair
-        </button>
-        <button class="gbtn gre" onclick="restartGame()">
-          <i class="fas fa-redo"></i> Jogar
-        </button>
-      </div>
+    <div class="ni">
+      <div class="ni-icon" style="color: #4ecdc4"><i class="fas fa-bolt"></i></div>
+      <div class="ni-bar"><div class="ni-fill fe" id="bE" style="width: 90%"></div></div>
+      <span class="ni-val" id="lE">90</span>
     </div>
-    <div id="dc"></div>
-    <div id="toast"></div>
-    <script src="script.js"></script>
-  </body>
+    <div class="ni">
+      <div class="ni-icon" style="color: #ff6b9d"><i class="fas fa-face-smile"></i></div>
+      <div class="ni-bar"><div class="ni-fill ff" id="bF" style="width: 70%"></div></div>
+      <span class="ni-val" id="lF">70</span>
+    </div>
+    <div class="ni">
+      <div class="ni-icon" style="color: #42a5f5"><i class="fas fa-droplet"></i></div>
+      <div class="ni-bar"><div class="ni-fill fc2" id="bC" style="width: 85%"></div></div>
+      <span class="ni-val" id="lC">85</span>
+    </div>
+    <div class="ni">
+      <div class="ni-icon" style="color: #ef5350"><i class="fas fa-heart"></i></div>
+      <div class="ni-bar"><div class="ni-fill fhp" id="bHp" style="width: 90%"></div></div>
+      <span class="ni-val" id="lHp">90</span>
+    </div>
+  </div>
+  <div id="rw">
+    <div class="rm on" id="r-hall">
+      <img src="" class="room-bg-img" alt="" />
+      <div class="room-overlay"></div>
+    </div>
+    <div class="rm" id="r-food">
+      <img src="" class="room-bg-img" alt="" />
+      <div class="room-overlay food-ov"></div>
+    </div>
+    <div class="rm" id="r-bath">
+      <img src="" class="room-bg-img" alt="" />
+      <div class="room-overlay bath-ov"></div>
+    </div>
+    <div class="rm" id="r-games">
+      <img src="" class="room-bg-img" alt="" />
+      <div class="room-overlay game-ov"></div>
+    </div>
+    <div class="rm" id="r-lab">
+      <img src="" class="room-bg-img" alt="" />
+      <div class="room-overlay lab-ov"></div>
+    </div>
+    <div class="rm" id="r-closet">
+      <img src="" class="room-bg-img" alt="" />
+      <div class="room-overlay closet-ov"></div>
+    </div>
+    <canvas id="pc"></canvas>
+    <div id="drag-target"></div>
+    <div id="sp"></div>
+    <div id="mf">😊</div>
+    <div class="hw" id="ui-hall">
+      <button class="hb" onclick="petPou()"><i class="fas fa-hand-sparkles"></i></button>
+      <button class="hb" onclick="pouSleep()"><i class="fas fa-moon"></i></button>
+      <button class="hb" onclick="pouDance()"><i class="fas fa-music"></i></button>
+    </div>
+    <div id="fg" class="item-grid"></div>
+    <div id="bath-items" class="item-grid"></div>
+    <div class="gp" id="ui-games" style="display: none"></div>
+    <div class="pl" id="ui-lab" style="display: none"></div>
+    <div class="cp" id="ui-closet" style="display: none"></div>
+  </div>
+  <nav id="tb">
+    <button class="tab on" data-r="hall"><i class="fas fa-home"></i><span>Sala</span></button>
+    <button class="tab" data-r="food"><i class="fas fa-utensils"></i><span>Comer</span></button>
+    <button class="tab" data-r="bath"><i class="fas fa-bath"></i><span>Banho</span></button>
+    <button class="tab" data-r="games"><i class="fas fa-gamepad"></i><span>Jogos</span></button>
+    <button class="tab" data-r="lab"><i class="fas fa-flask"></i><span>Lab</span></button>
+    <button class="tab" data-r="closet"><i class="fas fa-shirt"></i><span>Visual</span></button>
+  </nav>
+  <div id="gov">
+    <div id="ghud">Pontos: <span id="gsc">0</span></div>
+    <canvas id="gc" width="320" height="440"></canvas>
+    <div class="gob">
+      <button class="gbtn gex" onclick="endGame()"><i class="fas fa-times"></i> Sair</button>
+      <button class="gbtn gre" onclick="restartGame()"><i class="fas fa-redo"></i> Jogar</button>
+    </div>
+  </div>
+  <div id="dc"></div>
+  <div id="toast"></div>
+
+  <!-- Registro do Service Worker -->
+  <script>
+  if ('serviceWorker' in navigator) {
+    // Tenta registrar o SW do arquivo externo (funciona no Chrome)
+    navigator.serviceWorker.register('./sw.js').catch(function() {
+      // Fallback: tenta blob URL (funciona em alguns browsers)
+      try {
+        var code = 'self.addEventListener("install",function(e){self.skipWaiting()});'
+          + 'self.addEventListener("activate",function(e){e.waitUntil(clients.claim())});'
+          + 'self.addEventListener("fetch",function(e){'
+          + 'e.respondWith(fetch(e.request).catch(function(){return new Response("Offline",{status:503}))})});';
+        var b = new Blob([code], {type: 'application/javascript'});
+        navigator.serviceWorker.register(URL.createObjectURL(b)).catch(function(){});
+      } catch(ex) {}
+    });
+  }
+  </script>
+  <script src="script.js"></script>
+</body>
 </html>
